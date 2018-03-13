@@ -1,0 +1,32 @@
+{
+    "name": "chatbox-inc/laravel-swagger",
+    "authors": [
+        {
+            "name": "t.goto",
+            "email": "t.goto@chatbox-inc.com"
+        }
+    ],
+    "require": {
+        "symfony/yaml": "^4.0",
+        "league/json-reference": "dev-master"
+    },
+    "require-dev": {
+        "laravel/lumen": "^5.6",
+        "phpunit/phpunit": "^7.0",
+        "fzaninotto/faker": "^1.7",
+        "mockery/mockery": "^1.0",
+        "phpstan/phpstan": "^0.10.0@dev",
+        "justinrainbow/json-schema": "^5.0@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "Chatbox\\LaravelSwagger\\": "./src/"
+        }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/"
+        ]
+    },
+    "minimum-stability": "dev"
+}
