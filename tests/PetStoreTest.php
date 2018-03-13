@@ -8,7 +8,6 @@
 
 namespace Chatbox\LaravelSwagger\Test;
 
-
 use Chatbox\LaravelSwagger\Http\Actions\SwaggerActionInterface;
 use Chatbox\LaravelSwagger\Swagger;
 use Chatbox\LaravelSwagger\Test\Example\PetAction;
@@ -16,54 +15,54 @@ use Chatbox\LaravelSwagger\Test\Example\PetsAction;
 use Chatbox\LaravelSwagger\Test\Example\PetsCreateAction;
 use Chatbox\LaravelSwagger\Testing\Lumen\Inspector;
 
-class PetStoreTest extends TestCase {
+class PetStoreTest extends TestCase
+{
+    protected function swagger():Swagger
+    {
+        return app(Swagger::class);
+    }
 
-	protected function swagger():Swagger{
-		return app(Swagger::class);
-	}
+    public function testPetsAction()
+    {
+        $action = app(PetsAction::class);
+        assert($action instanceof SwaggerActionInterface);
 
-	public function testPetsAction(){
+        $inspector = new Inspector($action);
 
-		$action = app(PetsAction::class);
-		assert($action instanceof SwaggerActionInterface);
+        $response = $inspector->request([
+            "limit" => 0
+        ]);
 
-		$inspector = new Inspector($action);
+        $inspector->assertResponseStatus(200);
+        $inspector->assertWithSchema(200, $response);
+    }
 
-		$response = $inspector->request([
-			"limit" => 0
-		]);
+    public function testPetAction()
+    {
+        $action = app(PetAction::class);
+        assert($action instanceof SwaggerActionInterface);
 
-		$inspector->assertResponseStatus(200);
-		$inspector->assertWithSchema(200,$response);
-	}
+        $inspector = new Inspector($action);
 
-	public function testPetAction(){
+        $response = $inspector->request([
+            "limit" => 0
+        ]);
 
-		$action = app(PetAction::class);
-		assert($action instanceof SwaggerActionInterface);
+        $inspector->assertResponseStatus(200);
+        $inspector->assertWithSchema(200, $response);
+    }
 
-		$inspector = new Inspector($action);
+    public function testPetsCreateAction()
+    {
+        $action = app(PetsCreateAction::class);
+        assert($action instanceof SwaggerActionInterface);
 
-		$response = $inspector->request([
-			"limit" => 0
-		]);
+        $inspector = new Inspector($action);
 
-		$inspector->assertResponseStatus(200);
-		$inspector->assertWithSchema(200,$response);
-	}
+        $response = $inspector->request([
+            "limit" => 0
+        ]);
 
-	public function testPetsCreateAction(){
-
-		$action = app(PetsCreateAction::class);
-		assert($action instanceof SwaggerActionInterface);
-
-		$inspector = new Inspector($action);
-
-		$response = $inspector->request([
-			"limit" => 0
-		]);
-
-		$inspector->assertResponseStatus(201);
-	}
-
+        $inspector->assertResponseStatus(201);
+    }
 }

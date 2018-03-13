@@ -1,5 +1,6 @@
 <?php
 namespace Chatbox\LaravelSwagger\Test\Example;
+
 use Chatbox\LaravelSwagger\Http\Actions\SwaggerAction;
 use Chatbox\LaravelSwagger\Test\Examples\Schema\ErrorSchema;
 use Chatbox\LaravelSwagger\Test\Examples\Schema\PetSchema;
@@ -15,38 +16,41 @@ use Chatbox\LaravelSwagger\Values\Swagger\v3\Schema\StringSchema;
 /**
  * @see https://github.com/OAI/OpenAPI-Specification/blob/master/examples/v3.0/petstore.yaml
  */
-class PetsCreateAction extends SwaggerAction {
+class PetsCreateAction extends SwaggerAction
+{
+    protected $path = "/pets";
 
-	protected $path = "/pets";
+    protected $method = SwaggerAction::METHOD_POST;
 
-	protected $method = SwaggerAction::METHOD_POST;
+    protected $summary = "Create a pet";
 
-	protected $summary = "Create a pet";
+    protected $operationId = "createPets";
 
-	protected $operationId = "createPets";
+    protected $tags = ["pets"];
 
-	protected $tags = ["pets"];
+    public function __invoke()
+    {
+        return \Illuminate\Http\Response::create([
+            "id" => 12,
+            "name" => "/dev/piyo"
+        ], 201);
+    }
 
-	public function __invoke() {
-		return \Illuminate\Http\Response::create([
-			"id" => 12,
-			"name" => "/dev/piyo"
-		],201);
-	}
+    public function parameters(): array
+    {
+        return [];
+    }
 
-	public function parameters(): array {
-		return [];
-	}
-
-	public function responses(): array {
-		return [
-			"201" => new Response([
-				"description" => "Null response",
-			]),
-			"default" => new Response([
-				"description" => "unexpected error",
-				"schema" => new ErrorSchema()
-			]),
-		];
-	}
+    public function responses(): array
+    {
+        return [
+            "201" => new Response([
+                "description" => "Null response",
+            ]),
+            "default" => new Response([
+                "description" => "unexpected error",
+                "schema" => new ErrorSchema()
+            ]),
+        ];
+    }
 }

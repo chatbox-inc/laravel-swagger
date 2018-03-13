@@ -20,7 +20,7 @@ try {
 */
 
 $app = new Laravel\Lumen\Application(
-	(string)realpath(__DIR__.'/../')
+    (string)realpath(__DIR__.'/../')
 );
 
  $app->withFacades();
@@ -95,22 +95,21 @@ $app->register(\Chatbox\LaravelSwagger\LaravelSwaggerProvider::class);
 |
 */
 
-$app->extend("swagger",function(\Chatbox\LaravelSwagger\Swagger $swagger){
-	$swagger->addAction(\Chatbox\LaravelSwagger\Test\Example\PetsAction::class);
-	$swagger->addAction(\Chatbox\LaravelSwagger\Test\Example\PetAction::class);
-	$swagger->addAction(\Chatbox\LaravelSwagger\Test\Example\PetsCreateAction::class);
+$app->extend("swagger", function (\Chatbox\LaravelSwagger\Swagger $swagger) {
+    $swagger->addAction(\Chatbox\LaravelSwagger\Test\Example\PetsAction::class);
+    $swagger->addAction(\Chatbox\LaravelSwagger\Test\Example\PetAction::class);
+    $swagger->addAction(\Chatbox\LaravelSwagger\Test\Example\PetsCreateAction::class);
 
-	$swagger->addSchema(\Chatbox\LaravelSwagger\Test\Examples\Schema\PetSchema::class);
-	$swagger->addSchema(\Chatbox\LaravelSwagger\Test\Examples\Schema\PetsSchema::class);
-	$swagger->addSchema(\Chatbox\LaravelSwagger\Test\Examples\Schema\ErrorSchema::class);
-	return $swagger;
+    $swagger->addSchema(\Chatbox\LaravelSwagger\Test\Examples\Schema\PetSchema::class);
+    $swagger->addSchema(\Chatbox\LaravelSwagger\Test\Examples\Schema\PetsSchema::class);
+    $swagger->addSchema(\Chatbox\LaravelSwagger\Test\Examples\Schema\ErrorSchema::class);
+    return $swagger;
 });
 
 
 
-$app->router->group([],function($router){
-	\Chatbox\LaravelSwagger\Http\Router::api_route($router);
-
+$app->router->group([], function ($router) {
+    \Chatbox\LaravelSwagger\Http\Router::api_route($router);
 });
 
 //$app->router->get("/pets",function(){return[];});

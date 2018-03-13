@@ -10,17 +10,18 @@ namespace Chatbox\LaravelSwagger\Test\Examples\Schema;
 
 use Chatbox\LaravelSwagger\Values\Swagger\v3\Schema;
 
-class ErrorSchema extends Schema {
+class ErrorSchema extends Schema
+{
+    public $refname = "Error";
 
-	public $refname = "Error";
-
-	public function value(): array {
-		return [
-			"required" => ["code","message"],
-			"properties" => [
-				"code" => new Schema\IntegerSchema(),
-				"message" => new Schema\StringSchema(),
-			]
-		];
-	}
+    public function value(): array
+    {
+        return [
+            "required" => ["code","message"],
+            "properties" => [
+                "code" => new Schema\IntegerSchema(),
+                "message" => new Schema\StringSchema(),
+            ]
+        ];
+    }
 }

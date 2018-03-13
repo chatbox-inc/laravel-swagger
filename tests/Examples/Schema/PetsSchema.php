@@ -10,14 +10,15 @@ namespace Chatbox\LaravelSwagger\Test\Examples\Schema;
 
 use Chatbox\LaravelSwagger\Values\Swagger\v3\Schema;
 
-class PetsSchema extends Schema {
+class PetsSchema extends Schema
+{
+    public $refname = "Pets";
 
-	public $refname = "Pets";
-
-	public function value(): array {
-		return [
-			"type" => "array",
-			"items" => new PetSchema(),
-		];
-	}
+    public function value(): array
+    {
+        return [
+            "type" => "array",
+            "items" => new PetSchema(),
+        ];
+    }
 }
