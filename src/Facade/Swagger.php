@@ -1,5 +1,6 @@
 <?php
 namespace Chatbox\LaravelSwagger\Facade;
+
 use Illuminate\Support\Facades\Facade;
 
 use Chatbox\LaravelSwagger\Http\Actions\SwaggerActionInterface;
@@ -9,11 +10,10 @@ use Chatbox\LaravelSwagger\Http\Actions\SwaggerActionInterface;
  * @method static array getActions()
  * @method static void route( $router )
  */
-class Swagger extends Facade {
-
-	protected static function getFacadeAccessor()
-	{
-		return 'swagger';
-	}
-
+class Swagger extends Facade
+{
+    protected static function getFacadeAccessor()
+    {
+        return 'swagger';
+    }
 }

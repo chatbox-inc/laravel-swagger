@@ -1,5 +1,6 @@
 <?php
 namespace Chatbox\LaravelSwagger\Values\Swagger\v3\Security;
+
 use Chatbox\LaravelSwagger\Values\Swagger\v3\Contract\SecuritySchema;
 
 /**
@@ -8,23 +9,23 @@ use Chatbox\LaravelSwagger\Values\Swagger\v3\Contract\SecuritySchema;
  * Date: 2018/03/13
  * Time: 16:58
  */
-class BearerSecuritySchema implements SecuritySchema {
+class BearerSecuritySchema implements SecuritySchema
+{
+    protected $name;
 
-	protected $name;
+    protected $description;
 
-	protected $description;
+    public function getName(): string
+    {
+        return $this->name;
+    }
 
-	public function getName(): string {
-		return $this->name;
-	}
-
-	public function value(): array {
-		return [
-			"type" => "http",
-			"scheme" => "bearer",
-			"bearerFormat" => $this->description
-		];
-	}
-
-
+    public function value(): array
+    {
+        return [
+            "type" => "http",
+            "scheme" => "bearer",
+            "bearerFormat" => $this->description
+        ];
+    }
 }

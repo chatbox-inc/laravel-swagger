@@ -8,39 +8,38 @@
 
 namespace Chatbox\LaravelSwagger\Testing;
 
-
 use Chatbox\LaravelSwagger\Swagger;
 use JsonSchema\Constraints\Constraint;
 
-class ResponseTest {
+class ResponseTest
+{
+    public function assertStatusCode(int $expect, int $actual)
+    {
+        if ($expect === $actual) {
+            throw new \Exception("status code doesnt match. expect $expect actual $actual");
+        }
+        assert(true);
+    }
 
-	public function assertStatusCode(int $expect, int $actual) {
-		if($expect === $actual){
-			throw new \Exception("status code doesnt match. expect $expect actual $actual");
-		}
-		assert(true);
-	}
+    public function assertWithSchema(object $schema, $actual)
+    {
+        $actual = $this->convertBody($actual);
+        $validator = new \JsonSchema\Validator;
+        $validator->validate($actual, $schema, Constraint::CHECK_MODE_TYPE_CAST);
 
-	public function assertWithSchema(object $schema, $actual) {
-		$actual = $this->convertBody($actual);
-		$validator = new \JsonSchema\Validator;
-		$validator->validate($actual, $schema,Constraint::CHECK_MODE_TYPE_CAST);
-
-		if ($validator->isValid()) {
-			assert(true);
-		} else {
-			throw new \Exception("invalid schema");
-//			echo "JSON does not validate. Violations:\n";
+        if ($validator->isValid()) {
+            assert(true);
+        } else {
+            throw new \Exception("invalid schema");
+            //			echo "JSON does not validate. Violations:\n";
 //			foreach ($validator->getErrors() as $error) {
 //				echo sprintf("[%s] %s\n", $error['property'], $error['message']);
 //			}
-		}
-	}
+        }
+    }
 
-	protected function convertBody($body):array{
-		return json_decode($body,true);
-	}
-
-
-
+    protected function convertBody($body):array
+    {
+        return json_decode($body, true);
+    }
 }

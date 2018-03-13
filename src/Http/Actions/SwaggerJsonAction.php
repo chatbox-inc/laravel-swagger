@@ -1,5 +1,6 @@
 <?php
 namespace Chatbox\LaravelSwagger\Http\Actions;
+
 use Chatbox\LaravelSwagger\Service\SwaggerGenerator;
 
 /**
@@ -8,9 +9,10 @@ use Chatbox\LaravelSwagger\Service\SwaggerGenerator;
  * Date: 2018/03/10
  * Time: 2:37
  */
-class SwaggerJsonAction {
-
-	public function __invoke(SwaggerGenerator $generator) {
-		return $generator->generate();
-	}
+class SwaggerJsonAction
+{
+    public function __invoke(SwaggerGenerator $generator)
+    {
+        return $generator->generate();
+    }
 }

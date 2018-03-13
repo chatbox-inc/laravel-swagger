@@ -1,5 +1,6 @@
 <?php
 namespace Chatbox\LaravelSwagger\Values\Swagger\v3;
+
 use Chatbox\LaravelSwagger\Values\Swagger\v3\Contract\Schema;
 
 /**
@@ -8,28 +9,29 @@ use Chatbox\LaravelSwagger\Values\Swagger\v3\Contract\Schema;
  * Date: 2018/03/10
  * Time: 2:34
  */
-class MediaType implements \Chatbox\LaravelSwagger\Values\Swagger\v3\Contract\MediaType {
+class MediaType implements \Chatbox\LaravelSwagger\Values\Swagger\v3\Contract\MediaType
+{
+    use PropAssign;
 
-	use PropAssign;
+    public $mime = "application/json";
 
-	public $mime = "application/json";
+    public $schema;
 
-	public $schema;
+    /** @var array */
+    public $examples = [];
 
-	/** @var array */
-	public $examples = [];
+    public function mime()
+    {
+        return $this->mime;
+    }
 
-	public function mime() {
-		return $this->mime;
-	}
+    public function schema(): ?Schema
+    {
+        return $this->schema;
+    }
 
-	public function schema(): ?Schema {
-		return $this->schema;
-	}
-
-	public function examples(): array {
-		return $this->examples;
-	}
-
-
+    public function examples(): array
+    {
+        return $this->examples;
+    }
 }

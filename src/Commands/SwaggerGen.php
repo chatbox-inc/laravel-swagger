@@ -14,23 +14,16 @@ use Symfony\Component\Yaml\Yaml;
  * Date: 2018/02/16
  * Time: 17:51
  */
-class SwaggerGen extends Command {
-
-	protected $signature = "swagger:gen";
-
-
-	public function handle(SwaggerGenerator $swagger) {
-
-		$doc = $swagger->generate();
+class SwaggerGen extends Command
+{
+    protected $signature = "swagger:gen";
 
 
-		echo Yaml::dump($doc,99,2);
+    public function handle(SwaggerGenerator $swagger)
+    {
+        $doc = $swagger->generate();
 
 
-
-
-	}
-
-
-
+        echo Yaml::dump($doc, 99, 2);
+    }
 }

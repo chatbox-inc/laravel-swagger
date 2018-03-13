@@ -1,5 +1,6 @@
 <?php
 namespace Chatbox\LaravelSwagger\Http\Actions;
+
 use Chatbox\LaravelSwagger\Values\Swagger\v3\Contract\RequestBody;
 use Chatbox\LaravelSwagger\Values\Swagger\v3\Contract\Schema;
 use Chatbox\LaravelSwagger\Values\Swagger\v3\Contract\SecuritySchema;
@@ -10,64 +11,72 @@ use Chatbox\LaravelSwagger\Values\Swagger\v3\Contract\SecuritySchema;
  * Date: 2018/03/10
  * Time: 2:37
  */
-abstract class SwaggerAction implements SwaggerActionInterface {
+abstract class SwaggerAction implements SwaggerActionInterface
+{
+    protected $path = "/";
 
-	protected $path = "/";
+    protected $method = SwaggerAction::METHOD_GET;
 
-	protected $method = SwaggerAction::METHOD_GET;
+    protected $summary = null;
 
-	protected $summary = null;
+    protected $description = null;
 
-	protected $description = null;
+    protected $operationId = null;
 
-	protected $operationId = null;
+    protected $tags = [];
 
-	protected $tags = [];
+    public function path(): string
+    {
+        return $this->path;
+    }
 
-	public function path(): string {
-		return $this->path;
-	}
+    public function method(): string
+    {
+        return $this->method;
+    }
 
-	public function method(): string {
-		return $this->method;
-	}
+    public function summary(): ?string
+    {
+        return $this->summary;
+    }
 
-	public function summary(): ?string {
-		return $this->summary;
-	}
+    public function description(): ?string
+    {
+        return $this->description;
+    }
 
-	public function description(): ?string {
-		return $this->description;
-	}
+    public function operationId(): ?string
+    {
+        return $this->operationId;
+    }
 
-	public function operationId(): ?string {
-		return $this->operationId;
-	}
+    public function tags(): array
+    {
+        return $this->tags;
+    }
 
-	public function tags(): array {
-		return $this->tags;
-	}
+    public function parameters(): array
+    {
+        return [];
+    }
 
-	public function parameters(): array {
-		return [];
-	}
+    public function requestBodySchema(): ?Schema
+    {
+        return null;
+    }
 
-	public function requestBodySchema(): ?Schema {
-		return null;
-	}
+    public function requestBody(): ?RequestBody
+    {
+        return null;
+    }
 
-	public function requestBody(): ?RequestBody {
-		return null;
-	}
+    public function responses(): array
+    {
+        return [];
+    }
 
-	public function responses(): array {
-		return [];
-	}
-
-	public function security(): array {
-		return [];
-	}
-
-
-
+    public function security(): array
+    {
+        return [];
+    }
 }
