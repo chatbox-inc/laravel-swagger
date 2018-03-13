@@ -1,38 +1,27 @@
 ## Laravel Swagger
 
-## 
+## Functions 
 
-- [x] Swagger で http ルートが生成出来る
-- [ ] Swagger で http テストが記述出来る
-- [ ] Swagger で Axios クライアントが生成出来る
-- [ ] Swagger で mocha テストが記述出来る
-- [ ] example を返すだけのモックサーバの構築
+- [x] 記述したRoute から Swagger の生成
+- [x] 記述したRouteの自動テスト
+- [x] 記述したRoute から Swagger-ui の生成
+- [x] 記述したRoute の一括ルート登録
+- [ ] require-dev install の対応
+- [ ] front 向け リクエスト JSON の吐き出し
+- [ ] ドキュメントの整備
 
-## Guzzle Client 
+## Parser 
 
-````
-$routes = new RouteCollection($path)
+- [ ] Bearer 以外のSecuritySchema 
+- [ ] Path/Query 以外のParameter
+- [ ] その他v3.0 example の対応
 
-$route = $routes->find("AttendanceResource@get");
-$route = $routes->find("get","/me/hoge");
 
-$client = $route->client();
+## CI 
 
-$Factory = new Factory();
-$response = $clientFactory->byRoute($route);
-$client
+- [ ] Circle CI 導入
+- [ ] デモの構築
+- [ ] csfixer
+- [ ] phpstan 
 
-$client->setRequestBody();
-$response = $client->send();
 
-$assertion = new Assertion();
-
-$assertion->assertStatusCode("200",$route,$response)
-$assertion->assertBodyBySchema("200",$route,$response)
-
-$response = $response->assert("200")
-
-$client = new Client();
-$request = $client->route("get","/me/hoge")
-$request = $client->route();
-````
