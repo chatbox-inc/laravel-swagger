@@ -8,15 +8,15 @@
     ],
     "require": {
         "symfony/yaml": "^4.0",
-        "league/json-reference": "dev-master"
+        "league/json-reference": "dev-master",
+        "justinrainbow/json-schema": "^5.0@dev"
     },
     "require-dev": {
         "laravel/lumen": "^5.6",
         "phpunit/phpunit": "^7.0",
         "fzaninotto/faker": "^1.7",
         "mockery/mockery": "^1.0",
-        "phpstan/phpstan": "^0.10.0@dev",
-        "justinrainbow/json-schema": "^5.0@dev"
+        "phpstan/phpstan": "^0.10.0@dev"
     },
     "autoload": {
         "psr-4": {
